@@ -1,4 +1,4 @@
-const knex = require("../database/dbConfig");
+const knex = require("../database/dbconfig");
 
 module.exports = {
   // index: listagem
