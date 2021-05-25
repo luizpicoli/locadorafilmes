@@ -1,7 +1,7 @@
 const express = require("express");
-const DestaqueController = require("./controllers/DestaqueController");
-const routes = express.Router()
+const routes = express.Router();
 
+const DestaqueController = require("./controllers/DestaqueController");
 const FilmeController = require("./controllers/FilmeController");
 const UsuarioController = require("./controllers/UsuarioController");
 const login = require("./middleware/login")
