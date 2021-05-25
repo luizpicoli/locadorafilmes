@@ -5,7 +5,8 @@ const knex = require("../database/dbConfig");
 module.exports = {
   async index(req, res) {
     const usuarios = await knex("usuarios");
-    res.status(200).json(usuarios);
+    let usuariosFormatados = usuarios.map(usuario => { return {...usuario, senha: undefined} })
+    res.status(200).json(usuariosFormatados); 
 
   },
   async store(req, res) {
