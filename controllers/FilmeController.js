@@ -25,23 +25,24 @@ module.exports = {
 
   async store(req, res) {
     // faz a desestruturação do objeto req.body
-    const { nomefilme, genero_id, ano, preco, foto,destaque } = req.body;
+    const { nomefilme, genero_id, ano, preco, foto, destaque } = req.body;
 
     // validação para os campos
-    if (!nomefilme || !genero_id || !ano || !preco || !foto) {
+    if (!nomefilme || !genero_id || !ano || !preco || !foto ) {
       res.status(400).json({ erro: "Enviar nome filme, genero_id, ano, preco e foto do filme" });
       return;
     }
-
+    const novo = await knex("filmes").insert({ nomefilme, genero_id, ano, preco, foto,destaque });
+    console.log(novo)
     try {
-      const novo = await knex("filmes").insert({ nomefilme, genero_id, ano, preco, foto,destaque });
+     
       res.status(201).json({ id: novo[0] });
     } catch (error) {
       res.status(400).json({ erro: error.message });
     }
   },
   async findByName (req , res){
-    const {nomefilme,ano} = req.query;
+    const {nomefilme} = req.query;
     let resultado = await knex("filmes").where((qb)=>{
 
       qb.where("filmes.nomefilme","like",`%${nomefilme}%`)
