@@ -40,4 +40,15 @@ module.exports = {
       res.status(400).json({ erro: error.message });
     }
   },
+  async findByName (req , res){
+    const {nomefilme,ano} = req.query;
+    let resultado = await knex("filmes").where((qb)=>{
+
+      qb.where("filmes.nomefilme","like",`%${nomefilme}%`)
+
+
+    })
+  
+    res.status(200).json({ usuarios: resultado });
+  }
 };
