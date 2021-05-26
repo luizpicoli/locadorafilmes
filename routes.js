@@ -2,6 +2,7 @@ const express = require("express");
 const routes = express.Router();
 
 const DestaqueController = require("./controllers/DestaqueController");
+const EstatisticaController = require("./controllers/EstatisticaController");
 const FilmeController = require("./controllers/FilmeController");
 const UsuarioController = require("./controllers/UsuarioController");
 const login = require("./middleware/login")
@@ -15,6 +16,8 @@ routes.get("/usuarios", UsuarioController.index)
       .post("/login", UsuarioController.login);
       
 routes.get("/destaques", DestaqueController.index);
+
+routes.get("/estatistica",EstatisticaController.index)
 
 
 module.exports = routes;
