@@ -51,5 +51,20 @@ module.exports = {
     })
   
     res.status(200).json({ usuarios: resultado });
-  }
+  },
+
+  async destroy(req, res) {
+    try {
+      const { id } = req.params;
+
+      const deleteHandler = await knex("jogadores").where("id", id).del();
+
+      if (!deleteHandler) {
+        throw new Error(`Não existe filme com id ${id}`);
+      }
+      res.send(`Filme deletado com sucesso!`);
+    } catch (e) {
+      res.status(400).json({ ok: 0, msg: `Erro ao deletar: ${e.message}` });
+    }
+  },
 };
