@@ -4,8 +4,8 @@ const routes = express.Router();
 const DestaqueController = require("./controllers/DestaqueController");
 const EstatisticaController = require("./controllers/EstatisticaController");
 const FilmeController = require("./controllers/FilmeController");
-const UsuarioController = require("./controllers/UsuarioController");
 const ReservaController = require("./controllers/ReservaController");
+const UsuarioController = require("./controllers/UsuarioController");
 const login = require("./middleware/login")
 
 routes.get("/filmes",FilmeController.index)
@@ -23,7 +23,7 @@ routes.get("/usuarios", UsuarioController.index)
 routes.get("/destaques", DestaqueController.index);
 
 routes.get("/reserva", ReservaController.index)
-routes.post("/reserva", ReservaController.store)
+      .post("/reserva", ReservaController.store)
 
 
 module.exports = routes;
