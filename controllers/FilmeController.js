@@ -1,18 +1,8 @@
 const knex = require("../database/dbconfig");
 
 module.exports = {
-  // index: listagem
-  // store/create: inclusão
-  // update: alteração
-  // show: retornar 1 registro
-  // destroy: exclusão
-
-  async index(req, res) {
-    //const carros = await knex("carros").orderBy("id", "desc");
-    
-    // const carros = await knex("carros")
-    //    .join("marcas", "carros.marca_id", "=", "marcas.id")
-    //    .orderBy("carros.id", "desc");
+  
+  async index(req, res) {   
 
     const filmes = await knex
       .select("f.id", "f.nomefilme", "g.nome as genero", "f.ano", "f.preco", "f.foto","f.destaque")
