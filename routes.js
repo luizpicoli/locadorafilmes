@@ -14,6 +14,9 @@ routes.get("/filmes",FilmeController.index)
 
 routes.get("/filmesbyname", FilmeController.findByName);
 
+routes.get("/reserva", ReservaController.index)
+      .post("/reserva", ReservaController.store)
+
 routes.get("/estatistica", EstatisticaController.index)
 
 routes.get("/usuarios", UsuarioController.index)
@@ -22,8 +25,7 @@ routes.get("/usuarios", UsuarioController.index)
 
 routes.get("/destaques", DestaqueController.index);
 
-routes.get("/reserva", ReservaController.index)
-      .post("/reserva", ReservaController.store)
+
 
 
 module.exports = routes;

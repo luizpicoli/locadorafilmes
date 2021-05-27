@@ -3,10 +3,10 @@ const knex = require('../database/dbconfig');
 module.exports = {
   async index(req, res) {
     const reservas = await knex
-      .select("r.id", "r.nome","f.nome as filmes")
-      .from("reservas as r")
-      .leftJoin("filmes as f", "r.id", "f.id")
-      .orderBy("r.id", "desc");
+      .select("nome", "ativo","f.nome as filmes")
+      .from("reservas")
+      .leftJoin("filmes as f", "reservas.id", "f.id")
+      .orderBy("reservas.id", "desc");
 
     res.status(200).json(reservas);
   },
@@ -14,7 +14,7 @@ module.exports = {
   async store(req, res) {
     const { nome, ativo, filmes_id } = req.body;
 
-    if (!nome || !ativo || !filmes_id) {
+    if (!nome || !filmes_id) {
       res.status(400).json({ erro: "Dados inválidos" });
       return;
     }
