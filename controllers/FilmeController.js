@@ -57,7 +57,7 @@ module.exports = {
     try {
       const { id } = req.params;
 
-      const deleteHandler = await knex("jogadores").where("id", id).del();
+      const deleteHandler = await knex("filmes").where("id", id).del();
 
       if (!deleteHandler) {
         throw new Error(`Não existe filme com id ${id}`);

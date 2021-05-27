@@ -1,8 +1,8 @@
 exports.up = (knex) => {
-    return knex.schema.createTable("reservas", (table) => {
-      table.increments();
-      table.string("nome", 45).notNullable();
-      table.boolean('ativo').notNullable().defaultTo(true);
+  return knex.schema.createTable("propostas", (table) => {
+    table.increments();
+    table.string("comprador", 45).notNullable();
+    table.decimal("proposta", 9.2).notNullable();
 
       table.integer("filmes_id").notNullable().unsigned();
       table.foreign("filmes_id").references("filmes.id").onUpdate("cascade");
