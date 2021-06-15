@@ -1,15 +1,23 @@
 const express = require("express");
 const routes = express.Router();
+const cors = require("cors");
+
+routes.use(cors());
 
 const DestaqueController = require("./controllers/DestaqueController");
 const EstatisticaController = require("./controllers/EstatisticaController");
 const FilmeController = require("./controllers/FilmeController");
 const PropostasController = require("./controllers/PropostasController");
 const UsuarioController = require("./controllers/UsuarioController");
-const login = require("./middleware/login")
+const login = require("./middleware/login");
+const GeneroController = require('./controllers/GeneroController')
+
+
+
+routes.get("/generos", GeneroController.index);
 
 routes.get("/filmes",FilmeController.index)
-      .post("/filmes", login,FilmeController.store)
+      .post("/filmes",FilmeController.store)
       .delete("/filmes/:id", FilmeController.destroy);
 
 routes.get("/filmesbyname", FilmeController.findByName);

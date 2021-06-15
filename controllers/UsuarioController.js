@@ -71,7 +71,7 @@ module.exports = {
 
         }
         )
-        res.status(200).json({ msg: "Ok! Acesso Liberado", token });
+        res.status(200).json({token, user: dados[0].nome });
 
       } else {
         //res.status(400).json({ erro: "Senha Incorreta" });
